@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { useEffect, useRef } from 'react';
 import { Pixel } from '../models/Pixel';
 import { getPixelsForCanvas } from '../services/CanvasToPixels';
@@ -70,6 +69,7 @@ const PictureCanvas = (props: PictureCanvasProps): JSX.Element => {
         }
     };
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(drawImage, [props.image]);
 
     return (

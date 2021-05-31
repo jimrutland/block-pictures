@@ -1,5 +1,4 @@
 
-import * as React from 'react';
 import { Pixel } from '../models/Pixel';
 import { useEffect, useRef } from 'react';
 
