@@ -10,15 +10,15 @@ const EditedImage = (props: ImageProps): JSX.Element => {
     const imageCanvas = useRef<HTMLCanvasElement>(null);
     
     const drawCirclesOnPixels = (pixels: Pixel[][]): void => {
-        let currentCenterX = 3.5;
-        let currentCenterY = 3.5;
+        let currentCenterX = 4.5;
+        let currentCenterY = 4.5;
         if (imageCanvas.current) {
             const context = imageCanvas.current.getContext("2d");
             if (context) {
                 for (const pixelRow of pixels) {
                     for (let i = 0; i < pixelRow.length; i++) {
                         context.beginPath();
-                        context.arc(currentCenterX, currentCenterY, 2, 0, 2 * Math.PI, false);
+                        context.arc(currentCenterX, currentCenterY, 3.33, 0, 2 * Math.PI, false);
                         context.stroke();
                         context.closePath();
                         context.beginPath();
@@ -27,8 +27,8 @@ const EditedImage = (props: ImageProps): JSX.Element => {
                         context.closePath();         
                         currentCenterX += 7;
                     }
-                    currentCenterX = 3.5;
-                    currentCenterY += 7;
+                    currentCenterX = 4.5;
+                    currentCenterY += 9;
                 }
             }
         }

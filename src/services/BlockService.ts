@@ -3,7 +3,7 @@ import { Pixel } from "../models/Pixel";
 import { getPixelatedImage } from "./PixelationService";
 
 export function getBlockImage(pixelMatrix: Pixel[][]): Pixel[][] {
-    const pixelatedImage = getPixelatedImage(pixelMatrix, 7);
+    const pixelatedImage = getPixelatedImage(pixelMatrix, 9);
     return pixelatedImage.map(pixelRow => pixelRow.map(pixel => getBlockPixelFromPixel(pixel)));
 }
 
