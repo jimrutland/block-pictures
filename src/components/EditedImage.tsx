@@ -4,14 +4,16 @@ import { useEffect, useRef } from 'react';
 
 export interface ImageProps {
     pixels: Pixel[][];
+    blockFactor: number;
 }
 
 const EditedImage = (props: ImageProps): JSX.Element => {
     const imageCanvas = useRef<HTMLCanvasElement>(null);
     
     const drawCirclesOnPixels = (pixels: Pixel[][]): void => {
-        let currentCenterX = 4.5;
-        let currentCenterY = 4.5;
+        const halfFactor = props.blockFactor / 2;
+        let currentCenterX = halfFactor;
+        let currentCenterY = halfFactor;
         if (imageCanvas.current) {
             const context = imageCanvas.current.getContext("2d");
             if (context) {
@@ -25,10 +27,10 @@ const EditedImage = (props: ImageProps): JSX.Element => {
                         context.arc(currentCenterX, currentCenterY, 0.5, 0, 2 * Math.PI, false);
                         context.stroke();
                         context.closePath();         
-                        currentCenterX += 7;
+                        currentCenterX += props.blockFactor;
                     }
-                    currentCenterX = 4.5;
-                    currentCenterY += 9;
+                    currentCenterX = halfFactor;
+                    currentCenterY += props.blockFactor;
                 }
             }
         }

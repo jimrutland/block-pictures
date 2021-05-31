@@ -8,7 +8,7 @@ export interface PictureCanvasProps {
 }
 
 const PictureCanvas = (props: PictureCanvasProps): JSX.Element => {
-        const canvasRef = useRef<HTMLCanvasElement>(null);
+    const canvasRef = useRef<HTMLCanvasElement>(null);
         
     const drawImage = () => {
         if (props.image) {
