@@ -17,7 +17,7 @@ const EditedImage = (props: ImageProps): JSX.Element => {
             const context = imageCanvas.current.getContext("2d");
             if (context) {
                 for (const pixelRow of pixels) {
-                    for (const pixel of pixelRow) {
+                    for (let i = 0; i < pixelRow.length; i++) {
                         context.beginPath();
                         context.arc(currentCenterX, currentCenterY, 2, 0, 2 * Math.PI, false);
                         context.stroke();
