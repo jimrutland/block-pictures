@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import EditedImage from './components/EditedImage';
+import FileUpload from './components/FileUpload';
+import PictureCanvas from './components/PictureCanvas';
+import { Pixel } from './models/Pixel';
+import { getBlockImage } from './services/BlockService'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+export type ImageType = "pixelated" | "grayscale" | "invert" | "flip" | "shift" | "clear" | "block";
 
-export default App;
+const App = (): JSX.Element => {
+    const [image, setImage] = useState<HTMLImageElement>(new Image());
+    const [editedPixels, setEditedPixels] = useState<Pixel[][]>([]);
+    const [rawPixelMatrix, setRawPixelMatrix] = useState<Pixel[][]>([]);
+
+    const drawEditedImage = (imageType: ImageType) => {
+        switch(imageType)  {
+            case "clear":
+                setEditedPixels([]);
+                break;
+            case "block":
+                setEditedPixels(getBlockImage(rawPixelMatrix));
+                break;
+            default:
+                break;
+        }
+    };
+
+    return (
+        <div id="appContainer">
+            <div id="artContainer">
+                <PictureCanvas
+                    image={image} 
+                    setRawPixelMatrix={setRawPixelMatrix}/>
+                { editedPixels.length && <EditedImage pixels={editedPixels} /> }
+            </div>
+            <div id="buttons">
+                <FileUpload setImage={setImage}/>
+                <button onClick={() => drawEditedImage("block")}> Turn Into Blocks </button>
+                <button onClick={() => drawEditedImage("clear")}> Clear </button>
+            </div>
+        </div>
+    );
+};
+
+export default App
