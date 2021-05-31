@@ -35,7 +35,7 @@ const App = (): JSX.Element => {
             </div>
             <div id="buttons">
                 <FileUpload setImage={setImage}/>
-                <label>Block Size</label>
+                <span>Block Size</span>
                 <input type="range" min="9" max="15" value={blockFactor} onInput={(e: FormEvent<HTMLInputElement>) => {
                     const slider = e.target as HTMLInputElement;
                     setBlockFactor(parseInt(slider.value));
