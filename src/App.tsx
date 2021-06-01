@@ -27,6 +27,7 @@ const App = (): JSX.Element => {
 
     return (
         <div id="appContainer">
+            <span id="appHeader">Transform An Image Into Building Blocks</span>
             <div id="artContainer">
                 <PictureCanvas
                     image={image} 

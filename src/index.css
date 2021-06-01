@@ -1,6 +1,7 @@
 
 body {
   background-color: slategray;
+  font-family: 'VT323', monospace;
 }
 
 canvas {
@@ -11,10 +12,15 @@ canvas {
   height: 800px;
 }
 
+#appHeader {
+  font-size: 48px;
+}
+
 #buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 28px;
 }
 
 #artContainer {
