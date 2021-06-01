@@ -27,6 +27,7 @@ const FileUpload = (props: FileUploadProps): JSX.Element => {
         Upload File
         <input
             type="file"
+            accept="image/*"
             onChange={imageLoaded}
             hidden
         />
