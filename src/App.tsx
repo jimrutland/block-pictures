@@ -28,12 +28,13 @@ const App = (): JSX.Element => {
 
     return (
         <div id="appContainer">
-            <span id="appHeader">Transform An Image Into Building Blocks</span>
-            <div id="artContainer">
-                <PictureCanvas
-                    image={image} 
-                    setRawPixelMatrix={setRawPixelMatrix}/>
-                { editedPixels.length && <EditedImage blockFactor={blockFactor} pixels={editedPixels} /> }
+            <div id="appHeader">
+                Transform An Image Into Building Blocks
+            </div>
+            <div>
+                { editedPixels.length ? 
+                    <EditedImage blockFactor={blockFactor} pixels={editedPixels} />
+                    : <PictureCanvas image={image} setRawPixelMatrix={setRawPixelMatrix}/> }
             </div>
             <div id="buttons">
                 <FileUpload setImage={setImage}/>

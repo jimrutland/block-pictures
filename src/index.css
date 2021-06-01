@@ -13,35 +13,35 @@ canvas {
 }
 
 #appHeader {
+  text-align: center;
   font-size: 48px;
 }
 
-#buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) { 
+  #appContainer {
+    width: 100vh;
+  }
+
+  #buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
 }
 
-#buttons Button {
-  margin-left: 30px;
-}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  #buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
 
-#artContainer {
-  display: flex;
-}
-
-button {
-  margin: 20px;
-}
-
-.pixelGridRow {
-  height: 1px;
-  min-width: 800px;
-}
-
-.pixel {
-  width: 1px;
-  height: 1px;
-  display: inline-block;
+  #buttons Button {
+    margin-left: 30px;
+  }
 }
