@@ -56,6 +56,7 @@ const EditedImage = (props: ImageProps): JSX.Element => {
         }
     }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(drawImage, [props.pixels]);
 
     return (<canvas width={800} height={800} ref={imageCanvas}></canvas>);
