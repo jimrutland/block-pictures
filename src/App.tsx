@@ -3,7 +3,8 @@ import EditedImage from './components/EditedImage';
 import FileUpload from './components/FileUpload';
 import PictureCanvas from './components/PictureCanvas';
 import { Pixel } from './models/Pixel';
-import { getBlockImage } from './services/BlockService'
+import { getBlockImage } from './services/BlockService';
+import Button from '@material-ui/core/Button';
 
 export type ImageType = "pixelated" | "grayscale" | "invert" | "flip" | "shift" | "clear" | "block";
 
@@ -41,8 +42,8 @@ const App = (): JSX.Element => {
                     const slider = e.target as HTMLInputElement;
                     setBlockFactor(parseInt(slider.value));
                 }}/>
-                <button onClick={() => drawEditedImage("block")}> Turn Into Blocks </button>
-                <button onClick={() => drawEditedImage("clear")}> Clear </button>
+                <Button variant="contained" onClick={() => drawEditedImage("block")}> Turn Into Blocks </Button>
+                <Button variant="contained" onClick={() => drawEditedImage("clear")}> Clear </Button>
             </div>
         </div>
     );

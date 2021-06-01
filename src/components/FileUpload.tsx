@@ -1,5 +1,6 @@
 
 import * as React from 'react';
+import Button from '@material-ui/core/Button';
 
 export interface FileUploadProps {
     setImage: (image: HTMLImageElement) => void;
@@ -18,7 +19,18 @@ const FileUpload = (props: FileUploadProps): JSX.Element => {
             image.src = urlCreator.createObjectURL(uploadedFile);
         }
     };
-    return (<input type="file" onChange={imageLoaded} />);
+    return (<Button
+        variant="contained"
+        component="label"
+        style={{marginRight: '30px'}}
+        >
+        Upload File
+        <input
+            type="file"
+            onChange={imageLoaded}
+            hidden
+        />
+    </Button>);
 };
 
 export default FileUpload;
