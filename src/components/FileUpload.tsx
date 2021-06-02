@@ -16,7 +16,9 @@ const FileUpload = (props: FileUploadProps): JSX.Element => {
             image.onload = () => {
                 props.setImage(image);
             };
-            image.src = urlCreator.createObjectURL(uploadedFile);
+            if (uploadedFile) {
+                image.src = urlCreator.createObjectURL(uploadedFile);
+            }
         }
     };
     return (<Button
