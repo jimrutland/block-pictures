@@ -13,6 +13,7 @@ const App = (): JSX.Element => {
     const [editedPixels, setEditedPixels] = useState<Pixel[][]>([]);
     const [rawPixelMatrix, setRawPixelMatrix] = useState<Pixel[][]>([]);
     const [blockFactor, setBlockFactor] = useState<number>(11);
+
     const drawEditedImage = (imageType: ImageType) => {
         switch(imageType)  {
             case "clear":
@@ -31,23 +32,24 @@ const App = (): JSX.Element => {
             <div id="appHeader">
                 Transform An Image Into Building Blocks
             </div>
-            <div>
+            <div id="imageContainer">
                 { editedPixels.length ? 
                     <EditedImage blockFactor={blockFactor} pixels={editedPixels} />
                     : <PictureCanvas image={image} setRawPixelMatrix={setRawPixelMatrix}/> }
             </div>
             <div id="buttons">
                 <FileUpload setImage={setImage}/>
-                <span>Block Size</span>
-                <input type="range" min="9" max="15" value={blockFactor} onInput={(e: FormEvent<HTMLInputElement>) => {
-                    const slider = e.target as HTMLInputElement;
-                    setBlockFactor(parseInt(slider.value));
-                }}/>
+                <div id="sliderContainer">
+                    <span>Block Size</span>
+                    <input id="slider" type="range" min="9" max="15" value={blockFactor} onInput={(e: FormEvent<HTMLInputElement>) => {
+                        const slider = e.target as HTMLInputElement;
+                        setBlockFactor(parseInt(slider.value));
+                    }}/>
+                </div>
                 <Button variant="contained" onClick={() => drawEditedImage("block")}> Turn Into Blocks </Button>
                 <Button variant="contained" onClick={() => drawEditedImage("clear")}> Clear </Button>
             </div>
         </div>
     );
 };
-
 export default App

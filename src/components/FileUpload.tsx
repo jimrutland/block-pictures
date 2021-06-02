@@ -22,10 +22,10 @@ const FileUpload = (props: FileUploadProps): JSX.Element => {
     return (<Button
         variant="contained"
         component="label"
-        style={{marginRight: '30px'}}
         >
         Upload File
         <input
+            id="fileUploadInput"
             type="file"
             accept="image/*"
             onChange={imageLoaded}
